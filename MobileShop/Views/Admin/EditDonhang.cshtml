@@ -12,8 +12,9 @@
             @Html.HiddenFor(model => model.Madon)
             <label class="col-4">Ngày đặt: @Model.Ngaydat</label>
             @Html.HiddenFor(model => model.Ngaydat)
-            <label class="col-4">Người dùng: @Model.Madon - @((ViewBag.Nguoidungs as IList<MobileShop.Models.Nguoidung>).FirstOrDefault(c => c.MaNguoiDung == Model.MaNguoidung).Hoten)</label>
+            <label class="col-4">Người đặt: @Model.Madon - @((ViewBag.Nguoidungs as IList<MobileShop.Models.Nguoidung>).FirstOrDefault(c => c.MaNguoiDung == Model.MaNguoidung).Hoten)</label>
             @Html.HiddenFor(model => model.MaNguoidung)
+
         </div>
         <div class="row">
             @{

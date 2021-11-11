@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
@@ -33,11 +31,8 @@ namespace MobileShop.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var builder = new ConfigurationBuilder()
-                                .SetBasePath(Directory.GetCurrentDirectory())
-                                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-                IConfigurationRoot configuration = builder.Build();
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("DB"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("server =(local); database = MobileShop;uid=sa;pwd=123456;");
             }
         }
 
@@ -80,6 +75,10 @@ namespace MobileShop.Models
                 entity.ToTable("Donhang");
 
                 entity.Property(e => e.Ngaydat).HasColumnType("datetime");
+
+                entity.Property(e => e.Nguoinhan).HasMaxLength(50);
+
+                entity.Property(e => e.Sdt).HasMaxLength(15);
 
                 entity.HasOne(d => d.MaNguoidungNavigation)
                     .WithMany(p => p.Donhangs)

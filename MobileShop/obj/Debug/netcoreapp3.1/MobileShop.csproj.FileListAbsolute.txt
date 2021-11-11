@@ -745,3 +745,5 @@ D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.dll
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.pdb
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.genruntimeconfig.cache
+D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditMau.cshtml.g.cs
+D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\MauIndex.cshtml.g.cs
