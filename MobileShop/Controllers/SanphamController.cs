@@ -50,6 +50,7 @@ namespace MobileShop.Controllers
             var sanpham = context.Sanphams.Find(id);
             var hangselected = new SelectList(context.Hangsanxuats, "Mahang", "Tenhang", sanpham.Mahang);
             ViewBag.Mahang = hangselected;
+            ViewData["HangSanXuat"] = context.Hangsanxuats.ToList();
             return View(sanpham);
         }
     }

@@ -5687,19 +5687,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
+    "C:\\Users\\DO THANH TRUNG\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\MobileShop\\MobileShop\\MobileShop.csproj",
+      "projectUniqueName": "D:\\FPT_Uni\\Sem5\\codeC#_Trung\\script_project\\MobileShop\\MobileShop\\MobileShop.csproj",
       "projectName": "MobileShop",
-      "projectPath": "C:\\Users\\ADMIN\\Desktop\\MobileShop\\MobileShop\\MobileShop.csproj",
-      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\Desktop\\MobileShop\\MobileShop\\obj\\",
+      "projectPath": "D:\\FPT_Uni\\Sem5\\codeC#_Trung\\script_project\\MobileShop\\MobileShop\\MobileShop.csproj",
+      "packagesPath": "C:\\Users\\DO THANH TRUNG\\.nuget\\packages\\",
+      "outputPath": "D:\\FPT_Uni\\Sem5\\codeC#_Trung\\script_project\\MobileShop\\MobileShop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DO THANH TRUNG\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5774,7 +5774,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

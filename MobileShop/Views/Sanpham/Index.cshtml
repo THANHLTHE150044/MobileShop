@@ -52,10 +52,10 @@
                 <h3 style="text-align: center; background-color: palevioletred; border-radius: 30px; color: whitesmoke"> Danh sách sản phẩm </h3>
                 @foreach (var item in Model)
                 {
-                    <div  class="col-md-4" style="padding: 5px;">
+                    <div class="col-md-4" style="padding: 5px;">
                         <div style="padding: 5px; border: 1px solid grey; background-color: lavender; border-radius: 20px; height: 450px; margin-bottom: 5px">
                             <div>
-                                <img style="width: 100%; margin-top: 15px;" src="@Url.Content(item.Anhbia)" />
+                                <a href="/Sanpham/Detail/@item.Masp"><img style="width: 100%; margin-top: 15px;" src="@Url.Content(item.Anhbia)" /></a>
                                 <div class="p-4">
                                     <div class="text-center">
                                         <h4><a style="font-size:20px; color:black; text-align: center" href="/Sanpham/Detail/@item.Masp">@item.Tensp</a></h4>
