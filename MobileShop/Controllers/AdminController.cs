@@ -35,8 +35,6 @@ namespace MobileShop.Controllers
         [HttpPost]
         public ActionResult AddProduct(Sanpham sanpham)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             try
             {
                 context.Sanphams.Add(sanpham);
@@ -55,13 +53,14 @@ namespace MobileShop.Controllers
             var sanpham = context.Sanphams.Find(id);
             var hangselected = new SelectList(context.Hangsanxuats, "Mahang", "Tenhang", sanpham.Mahang);
             ViewBag.Mahang = hangselected;
+            ViewBag.Mau = context.Maus.ToList();
+            ViewBag.MauDaChon = context.MauSanphams.Where(m => m.Masp == id);
+            ViewBag.Anh = context.Anhs.Where(a => a.Masp == id).ToList();
             return View(sanpham);
         }
         [HttpPost]
         public ActionResult EditProduct(Sanpham sanpham)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             try
             {
                 var sanphamcu = context.Sanphams.Find(sanpham.Masp);
@@ -84,8 +83,6 @@ namespace MobileShop.Controllers
         }
         public ActionResult DeleteProduct(int id)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             try
             {
                 var sanpham = context.Sanphams.FirstOrDefault(s => s.Masp == id);
@@ -117,13 +114,12 @@ namespace MobileShop.Controllers
             ViewBag.Nguoidungs = context.Nguoidungs.ToList();
             ViewBag.Chitietdonhangs = context.Chitietdonhangs.Where(s => s.Madon == id).ToList();
             ViewBag.Sanphams = context.Sanphams.ToList();
+            ViewBag.Maus = context.Maus.ToList();
             return View(donhang);
         }
         [HttpPost]
         public ActionResult EditDonhang(Donhang donhang)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             try
             {
                 var donhangcu = context.Donhangs.Find(donhang.Madon);
@@ -161,8 +157,6 @@ namespace MobileShop.Controllers
         [HttpPost]
         public ActionResult EditNguoidung(Nguoidung nguoidung)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             try
             {
                 var nguoidungcu = context.Nguoidungs.Find(nguoidung.MaNguoiDung);
@@ -171,7 +165,7 @@ namespace MobileShop.Controllers
                 nguoidungcu.Dienthoai = nguoidung.Dienthoai;
                 nguoidungcu.Matkhau = nguoidung.Matkhau;
                 nguoidungcu.Idquyen = nguoidung.Idquyen;
-                
+
                 context.SaveChanges();
                 return RedirectToAction("NguoidungIndex");
             }
@@ -182,8 +176,6 @@ namespace MobileShop.Controllers
         }
         public ActionResult DeleteNguoidung(int id)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             try
             {
                 var nguoidung = context.Nguoidungs.FirstOrDefault(s => s.MaNguoiDung == id);
@@ -205,7 +197,7 @@ namespace MobileShop.Controllers
             var hangsanxuat = context.Hangsanxuats.ToList();
             int pageSize = 8;
             int pageNumber = (page ?? 1);
-            
+
             return View(hangsanxuat.ToPagedList(pageNumber, pageSize));
         }
 
@@ -214,21 +206,17 @@ namespace MobileShop.Controllers
             if (HttpContext.Session.GetString("UserSession") != null)
                 TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             var hangsanxuat = context.Hangsanxuats.Find(id);
-            
-            
+
+
             return View(hangsanxuat);
         }
         [HttpPost]
         public ActionResult EditHang(Hangsanxuat hangsanxuat)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             try
             {
                 var hangcu = context.Hangsanxuats.Find(hangsanxuat.Mahang);
                 hangcu.Tenhang = hangsanxuat.Tenhang;
-                
-
                 context.SaveChanges();
                 return RedirectToAction("HangsanxuatIndex");
             }
@@ -239,8 +227,6 @@ namespace MobileShop.Controllers
         }
         public ActionResult DeleteHang(int id)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             try
             {
                 var hangsanxuat = context.Hangsanxuats.FirstOrDefault(s => s.Mahang == id);
@@ -264,8 +250,6 @@ namespace MobileShop.Controllers
         [HttpPost]
         public ActionResult AddHang(Hangsanxuat hangsanxuat)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             try
             {
                 context.Hangsanxuats.Add(hangsanxuat);
@@ -278,5 +262,132 @@ namespace MobileShop.Controllers
             }
         }
 
+        public ActionResult DeleteAnh(int id)
+        {
+            try
+            {
+                var anh = context.Anhs.FirstOrDefault(s => s.Maanh == id);
+                context.Anhs.Remove(anh);
+                context.SaveChanges();
+                return RedirectToAction("EditProduct", new { id = anh.Masp });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddAnh(string url, int masp)
+        {
+            try
+            {
+                var anh = new Anh() { Url = url, Masp = masp };
+                context.Anhs.Add(anh);
+                context.SaveChanges();
+                return RedirectToAction("EditProduct", new { id = masp });
+            }
+            catch
+            {
+                return RedirectToAction("EditProduct", new { id = masp });
+            }
+        }
+
+
+        public ActionResult MauIndex(int? page)
+        {
+            if (HttpContext.Session.GetString("UserSession") != null)
+                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
+            if (page == null) page = 1;
+            var mau = context.Maus.ToList();
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(mau.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult EditMau(int id)
+        {
+            if (HttpContext.Session.GetString("UserSession") != null)
+                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
+            var mau = context.Maus.Find(id);
+            return View(mau);
+        }
+        [HttpPost]
+        public ActionResult EditMau(Mau mau)
+        {
+            try
+            {
+                var maucu = context.Maus.Find(mau.Mamau);
+                maucu.Tenmau = mau.Tenmau;
+                context.SaveChanges();
+                return RedirectToAction("MauIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult DeleteMau(int id)
+        {
+            try
+            {
+                var mau = context.Maus.FirstOrDefault(s => s.Mamau == id);
+                context.Maus.Remove(mau);
+                context.SaveChanges();
+                return RedirectToAction("MauIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult AddMau()
+        {
+            if (HttpContext.Session.GetString("UserSession") != null)
+                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddMau(Mau mau)
+        {
+            try
+            {
+                context.Maus.Add(mau);
+                context.SaveChanges();
+                return RedirectToAction("MauIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult AddMauSanpham(int masp, int mamau)
+        {
+            try
+            {
+                MauSanpham mauSanpham = new MauSanpham() { Masp = masp, Mamau = mamau };
+                context.MauSanphams.Add(mauSanpham);
+                context.SaveChanges();
+                return RedirectToAction("EditProduct", new { id = masp });
+            }
+            catch
+            {
+                return RedirectToAction("EditProduct", new { id = masp });
+            }
+        }
+        public ActionResult DeleteMauSanpham(int masp, int mamau)
+        {
+            try
+            {
+                var mausanpham = context.MauSanphams.FirstOrDefault(s => s.Mamau == mamau && s.Masp == masp);
+                context.MauSanphams.Remove(mausanpham);
+                context.SaveChanges();
+                return RedirectToAction("EditProduct", new { id = masp });
+            }
+            catch
+            {
+                return RedirectToAction("EditProduct", new { id = masp });
+            }
+        }
     }
 }
