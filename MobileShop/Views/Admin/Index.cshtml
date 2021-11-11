@@ -9,16 +9,13 @@
     <a href="/Admin/AddProduct"><button class="btn btn-success">Thêm sản phẩm mới</button></a>
 </p>
 <table class="table table-bordered">
-    <tr>
-        <th>Mã sản phẩm</th>
+    <tr class="thead-light">
         <th>Tên sản phẩm</th>
         <th>Giá tiền</th>
         <th>Số lượng</th>
-        <th>Mô tả</th>
-        <th>Thẻ sim</th>
         <th>Bộ nhớ trong</th>
-        <th>Sản phẩm mới</th>
         <th>Ram</th>
+        <th>Sản phẩm mới</th>
         <th>Ảnh bìa</th>
         <th>Tên hãng</th>
         <th>Chỉnh sửa</th>
@@ -26,15 +23,12 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Masp</td>
             <td>@item.Tensp</td>
             <td>@item.Giatien</td>
             <td>@item.Soluong</td>
-            <td>@item.Mota</td>
-            <td>@item.Thesim</td>
             <td>@item.Bonhotrong</td>
-            <td>@item.Sanphammoi.Value</td>
             <td>@item.Ram</td>
+            <td>@item.Sanphammoi.Value</td>
             <td>
                 <img src="@Url.Content(item.Anhbia)" width="50" height="50" />
             </td>

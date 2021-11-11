@@ -5,12 +5,15 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <h2 class="mt-2" style="text-align:center">Quản lý đơn hàng</h2>
-<table class="table table-bordered">
-    <tr>
+<table class="table table-bordered mt-3">
+    <tr class="thead-light">
         <th>Mã đơn</th>
         <th>Ngày đặt</th>
         <th>Tình trạng</th>
-        <th>Mã người dùng</th>
+        <th>Mã người đặt</th>
+        <th>Người nhận</th>
+        <th>Địa chỉ</th>
+        <th>SĐT</th>
         <th>Số lượng sản phẩm</th>
         <th>Tổng tiền</th>
         <th>Chi tiết</th>
@@ -34,6 +37,9 @@
             }
 
             <td>@item.MaNguoidung</td>
+            <td>@item.Nguoinhan</td>
+            <td>@item.Diachi</td>
+            <td>@item.Sdt</td>
             @{
                 int soluong = 0;
                 int tongtien = 0;
