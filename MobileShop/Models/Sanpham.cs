@@ -9,7 +9,7 @@ namespace MobileShop.Models
     {
         public Sanpham()
         {
-            Chitietdonhangs = new HashSet<Chitietdonhang>();
+            Anhs = new HashSet<Anh>();
         }
 
         public int Masp { get; set; }
@@ -23,8 +23,15 @@ namespace MobileShop.Models
         public int? Ram { get; set; }
         public string Anhbia { get; set; }
         public int? Mahang { get; set; }
+        public string Hedieuhanh { get; set; }
+        public string Manhinh { get; set; }
+        public string Chip { get; set; }
+        public string Dungluongpin { get; set; }
+        public string Dosangtoida { get; set; }
+        public string Dophangiai { get; set; }
+        public string Kichthuoc { get; set; }
 
         public virtual Hangsanxuat MahangNavigation { get; set; }
-        public virtual ICollection<Chitietdonhang> Chitietdonhangs { get; set; }
+        public virtual ICollection<Anh> Anhs { get; set; }
     }
 }

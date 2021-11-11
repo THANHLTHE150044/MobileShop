@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
@@ -19,48 +17,55 @@ namespace MobileShop.Models
         {
         }
 
+        public virtual DbSet<Anh> Anhs { get; set; }
         public virtual DbSet<Chitietdonhang> Chitietdonhangs { get; set; }
         public virtual DbSet<Donhang> Donhangs { get; set; }
         public virtual DbSet<Hangsanxuat> Hangsanxuats { get; set; }
+        public virtual DbSet<Mau> Maus { get; set; }
+        public virtual DbSet<MauSanpham> MauSanphams { get; set; }
         public virtual DbSet<Nguoidung> Nguoidungs { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<Sanpham> Sanphams { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var builder = new ConfigurationBuilder()
-                                 .SetBasePath(Directory.GetCurrentDirectory())
-                                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-            IConfigurationRoot configuration = builder.Build();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DB"));
-
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("server =(local); database = MobileShop;uid=sa;pwd=123456;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "Vietnamese_CI_AS");
+
+            modelBuilder.Entity<Anh>(entity =>
+            {
+                entity.HasKey(e => e.Maanh);
+
+                entity.ToTable("Anh");
+
+                entity.Property(e => e.Url)
+                    .IsUnicode(false)
+                    .HasColumnName("URL");
+
+                entity.HasOne(d => d.MaspNavigation)
+                    .WithMany(p => p.Anhs)
+                    .HasForeignKey(d => d.Masp)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Anh_Sanpham");
+            });
 
             modelBuilder.Entity<Chitietdonhang>(entity =>
             {
-                entity.HasKey(e => new { e.Madon, e.Masp });
+                entity.HasKey(e => new { e.Madon, e.Masp, e.Mamau });
 
                 entity.ToTable("Chitietdonhang");
 
                 entity.Property(e => e.Dongia).HasColumnType("decimal(18, 0)");
 
                 entity.Property(e => e.Thanhtien).HasColumnType("decimal(18, 0)");
-
-                entity.HasOne(d => d.MadonNavigation)
-                    .WithMany(p => p.Chitietdonhangs)
-                    .HasForeignKey(d => d.Madon)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Chitietdonhang_Donhang");
-
-                entity.HasOne(d => d.MaspNavigation)
-                    .WithMany(p => p.Chitietdonhangs)
-                    .HasForeignKey(d => d.Masp)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Chitietdonhang_Sanpham");
             });
 
             modelBuilder.Entity<Donhang>(entity =>
@@ -86,6 +91,22 @@ namespace MobileShop.Models
                 entity.Property(e => e.Tenhang)
                     .HasMaxLength(10)
                     .IsFixedLength(true);
+            });
+
+            modelBuilder.Entity<Mau>(entity =>
+            {
+                entity.HasKey(e => e.Mamau);
+
+                entity.ToTable("Mau");
+
+                entity.Property(e => e.Tenmau).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<MauSanpham>(entity =>
+            {
+                entity.HasKey(e => new { e.Masp, e.Mamau });
+
+                entity.ToTable("Mau_Sanpham");
             });
 
             modelBuilder.Entity<Nguoidung>(entity =>
@@ -136,7 +157,21 @@ namespace MobileShop.Models
 
                 entity.ToTable("Sanpham");
 
+                entity.Property(e => e.Chip).HasMaxLength(50);
+
+                entity.Property(e => e.Dophangiai).HasMaxLength(50);
+
+                entity.Property(e => e.Dosangtoida).HasMaxLength(50);
+
+                entity.Property(e => e.Dungluongpin).HasMaxLength(50);
+
                 entity.Property(e => e.Giatien).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.Hedieuhanh).HasMaxLength(50);
+
+                entity.Property(e => e.Kichthuoc).HasMaxLength(50);
+
+                entity.Property(e => e.Manhinh).HasMaxLength(50);
 
                 entity.Property(e => e.Mota).HasColumnType("ntext");
 
