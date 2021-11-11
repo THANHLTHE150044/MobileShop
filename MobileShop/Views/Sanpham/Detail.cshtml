@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var hangSanXuat = ViewData["HangSanXuat"] as List<Hangsanxuat>;
+    var anh = ViewData["Anh"] as List<Anh>;
 }
 
 <html>
@@ -24,6 +25,23 @@
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-sm-6">
                         <div class="white-box text-center"><img style="width:100%" src="@Url.Content(@Model.Anhbia)" class="img-responsive"></div>
+
+                        <div class="slider-area">
+                            <div class="block-slider block-slider4">
+                                <ul class="" id="bxslider-home4">
+                                    @foreach (Anh anhPhu in anh)
+                                    {
+                                        if (anhPhu.Masp == @Model.Masp)
+                                        {
+                                            <li>
+                                                <img src="@Url.Content(anhPhu.Url)" alt="Slide">
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div> <!-- End slider area -->
+
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-6">
                         <h3 class="box-title mt-5">@Model.Tensp</h3>

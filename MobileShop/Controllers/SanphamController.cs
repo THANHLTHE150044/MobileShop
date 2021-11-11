@@ -51,6 +51,7 @@ namespace MobileShop.Controllers
             var hangselected = new SelectList(context.Hangsanxuats, "Mahang", "Tenhang", sanpham.Mahang);
             ViewBag.Mahang = hangselected;
             ViewData["HangSanXuat"] = context.Hangsanxuats.ToList();
+            ViewData["Anh"] = context.Anhs.ToList();
             return View(sanpham);
         }
     }
