@@ -2,7 +2,7 @@
 @model List<GioHang>
 
 @{ ViewBag.Title = "GioHang";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 <h2 class=""> GIỎ HÀNG <i class="fa fa-shopping-cart"></i></h2>
 <br />
 <table class="table-hover table-bordered divGioHang">
@@ -24,21 +24,22 @@
 
     @foreach (var item in Model)
     {
-<tr class="font-italic">
-    <td> @item.iMasp</td>
+        <tr class="font-italic">
+            <td> @item.iMasp</td>
 
-    <td> @item.sTensp</td>
+            <td> @item.sTensp</td>
 
-    <td> <img src="@Url.Content("~/HinhanhSP/" +item.sAnhBia)" width="50" height="50" /></td>
+            <td>@item.sAnhBia</td>
 
-    <td>  @String.Format("{0:0,0}", item.dDonGia) VNĐ</td>
+            <td>  @String.Format("{0:0,0}", item.dDonGia) VNĐ</td>
 
-    <td> @item.iSoLuong</td>
+            <td> @item.iSoLuong</td>
 
-    <td>   @String.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
+            <td>   @String.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
 
 
-</tr>}
+        </tr>
+    }
 
 
 
@@ -47,13 +48,26 @@
 
             @Html.ActionLink("Chỉnh sửa giỏ hàng", "SuaGioHang")
         </td>
-        <td colspan="6" style="text-align:right;color:blue">
-            @using (Html.BeginForm("DatHang", "GioHang", new { @class = "" }))
-            {
-<input type="submit" value="Đặt hàng" class="btn-danger" />}
+        
         </td>
     </tr>
 </table>
+<div style="margin-left:40px">
+    <label style="min-width:100px;">Người nhận</label>
+    <input type="text" name="name" />
+    <br />
+    <label style="min-width:100px;">Địa chỉ</label>
+    <input type="text" name="address" />
+    <br />
+    <label style="min-width:100px;">SDT</label>
+    <input type="text" name="phone" />
+    @using (Html.BeginForm("DatHang", "GioHang", new { @class = "" }))
+    {
+        <input type="submit" value="Đặt hàng" class="btn-danger" />
+    }
+</div>
+
+
 
 @*Css giỏ hàng*@
 <style type="text/css">

@@ -27,10 +27,8 @@ namespace MobileShop.Controllers
             return lstGioHang;
         }
         //Thêm giỏ hàng
-        public ActionResult ThemGioHang(int iMasp, string strURL)
+        public ActionResult ThemGioHang(int iMasp)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             Sanpham sp = db.Sanphams.SingleOrDefault(n => n.Masp == iMasp);
             if (sp == null)
             {
@@ -40,20 +38,18 @@ namespace MobileShop.Controllers
             //Lấy ra session giỏ hàng
             List<GioHang> lstGioHang = LayGioHang();
             //Kiểm tra sp này đã tồn tại trong session[giohang] chưa
-            GioHang sanpham = lstGioHang.SingleOrDefault(n => n.iMasp == iMasp);
-           
-
+            GioHang sanpham = lstGioHang.Find(n => n.iMasp == iMasp);
             if (sanpham == null)
             {
                 sanpham = new GioHang(iMasp);
                 //Add sản phẩm mới thêm vào list
                 lstGioHang.Add(sanpham);
-                return Redirect("/Giohang/Giohang");
+                return Redirect("Giohang/Giohang");
             }
             else
             {
                 sanpham.iSoLuong++;
-                return Redirect("/Giohang/Giohang");
+                return Redirect("Giohang/Giohang");
             }
         }
         //Cập nhật giỏ hàng 

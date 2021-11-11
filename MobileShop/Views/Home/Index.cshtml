@@ -95,9 +95,12 @@
                                         <div class="product-f-image">
                                             <img src="@Url.Content(item.Anhbia)" alt="">
                                             <div class="product-hover">
-                                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart" ></i> Add to cart</a>
+                                                <a asp-action="ThemGioHang" asp-controller="Giohang" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                                 <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                             </div>
+
+
+
                                         </div>
 
                                         <h2><a href="single-product.html">@item.Tensp</a></h2>
@@ -106,6 +109,9 @@
                                             <ins>@item.Giatien</ins> <del>$100.00</del>
                                         </div>
                                     </div>
+                                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp}))
+                                    {
+                        <input type="submit" value="Mua hàng" id="bgnGioHang" />                        }
                                 }
                             }
                         </div>
