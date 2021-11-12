@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Learning\\FPT U\\Ki5\\PRN211\\Project\\MobileShop\\MobileShop\\MobileShop.csproj": {}
+    "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\MobileShop.csproj": {}
   },
   "projects": {
-    "D:\\Learning\\FPT U\\Ki5\\PRN211\\Project\\MobileShop\\MobileShop\\MobileShop.csproj": {
+    "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\MobileShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Learning\\FPT U\\Ki5\\PRN211\\Project\\MobileShop\\MobileShop\\MobileShop.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\MobileShop.csproj",
         "projectName": "MobileShop",
-        "projectPath": "D:\\Learning\\FPT U\\Ki5\\PRN211\\Project\\MobileShop\\MobileShop\\MobileShop.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Learning\\FPT U\\Ki5\\PRN211\\Project\\MobileShop\\MobileShop\\obj\\",
+        "projectPath": "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\MobileShop.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
