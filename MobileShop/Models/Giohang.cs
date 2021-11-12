@@ -14,20 +14,23 @@ namespace MobileShop.Models
         //    get { return iMaSP; }
         //    set { iMaSP = value; }
         //}
-       MobileShopContext db = new MobileShopContext();
+        MobileShopContext db = new MobileShopContext();
         public int iMasp { get; set; }
         public string sTensp { get; set; }
         public string sAnhBia { get; set; }
         public double dDonGia { get; set; }
         public int iSoLuong { get; set; }
+
+        public int iMamau{ get; set; }
         public double ThanhTien
         {
             get { return iSoLuong * dDonGia; }
         }
         //Hàm tạo cho giỏ hàng
-        public GioHang(int Masp)
+        public GioHang(int Masp,int mamau)
         {
             iMasp = Masp;
+            iMamau = mamau;
             Sanpham sp = db.Sanphams.Single(n => n.Masp == iMasp);
             sTensp = sp.Tensp;
             sAnhBia = sp.Anhbia;

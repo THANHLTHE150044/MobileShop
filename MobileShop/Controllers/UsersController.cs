@@ -35,6 +35,7 @@ namespace MobileShop.Controllers
                 {
                     return RedirectToAction("index", "Admin");
                 }
+
                 return RedirectToAction("Index", "Home");
             }
             else

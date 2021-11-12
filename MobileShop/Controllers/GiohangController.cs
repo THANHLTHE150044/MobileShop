@@ -16,18 +16,24 @@ namespace MobileShop.Controllers
        // Lấy giỏ hàng
         public List<GioHang> LayGioHang()
         {
+            List<GioHang> lstGioHang = new List<GioHang>();
             if (HttpContext.Session.GetString("UserSession") != null)
                 TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
-            List<GioHang> lstGioHang = SessionHelper.GetObjectFromJson<List<GioHang>>(HttpContext.Session, "GioHang");
-            if(lstGioHang == null)
+            if (HttpContext.Session.GetString("GioHang") != null)
             {
-                lstGioHang = new List<GioHang>();
-                
+                lstGioHang = JsonConvert.DeserializeObject<List<GioHang>>(HttpContext.Session.GetString("GioHang"));
+            }
+
+            if (lstGioHang == null)
+            {
+
+                HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(lstGioHang));
+
             }
             return lstGioHang;
         }
         //Thêm giỏ hàng
-        public ActionResult ThemGioHang(int iMasp)
+        public ActionResult ThemGioHang(int iMasp, int mamau)
         {
             Sanpham sp = db.Sanphams.SingleOrDefault(n => n.Masp == iMasp);
             if (sp == null)
@@ -41,15 +47,15 @@ namespace MobileShop.Controllers
             GioHang sanpham = lstGioHang.Find(n => n.iMasp == iMasp);
             if (sanpham == null)
             {
-                sanpham = new GioHang(iMasp);
+                sanpham = new GioHang(iMasp,mamau);
                 //Add sản phẩm mới thêm vào list
                 lstGioHang.Add(sanpham);
-                return Redirect("Giohang/Giohang");
+                return Redirect("Giohang");
             }
             else
             {
                 sanpham.iSoLuong++;
-                return Redirect("Giohang/Giohang");
+                return Redirect("Giohang");
             }
         }
         //Cập nhật giỏ hàng 
