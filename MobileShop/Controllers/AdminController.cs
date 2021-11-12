@@ -7,6 +7,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace MobileShop.Controllers
 {

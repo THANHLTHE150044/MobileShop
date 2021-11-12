@@ -39,13 +39,18 @@
                                 </thead>
 
                                 <tbody>
+                                    @{ int Total = 0;}
                                     @foreach (var item in Model)
                                     {
 
 
                                         <tr class="cart_item">
                                             <td class="product-remove">
-                                                <a title="Remove this item" class="remove" href="#">×</a>
+                                                @using (Html.BeginForm("Xoagiohang", "GioHang", new { @Masp = item.Masp }))
+                                                {
+                                                    <input type="submit" value="Xoa" name="delete_cart" class="button">
+                                                }
+
                                             </td>
 
                                             <td class="product-thumbnail">
@@ -62,31 +67,55 @@
 
                                             <td class="product-quantity">
                                                 <div class="quantity buttons_added">
-                                                   
+
                                                     <input type="number" size="4" class="input-text qty text" title="Qty" value="@item.Soluong" min="0" step="1">
-                                                   
-                                                    
+
+
                                                 </div>
                                             </td>
                                             @{ var THanhtien = item.Dongia * item.Soluong;}
+
+                                            @{ Total = Total + (int)THanhtien;}
+
+
                                             <td class="product-subtotal">
                                                 <span class="amount">@THanhtien</span>
                                             </td>
                                             <td>
-                                                @using (Html.BeginForm("CapnhatGiohang", "GioHang", new { @Masp = item.Masp , @Soluong =item.Soluong }))
+                                                @using (Html.BeginForm("CapnhatGiohang", "GioHang", new { @Masp = item.Masp, @Soluong = item.Soluong }))
                                                 {
                                                     <input type="submit" value="Update Cart" name="update_cart" class="button">
                                                 }
-                                                </td>
+                                            </td>
+
                                         </tr>
+
                                     }
-                                    <tr>
-                                        <td class="actions" colspan="6">
-                                            
-                                           
-                                            <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
-                                        </td>
-                                    </tr>
+                                   
+                                <tr>
+                                    <form asp-action="DatHang" asp-controller="GioHang">
+
+
+                                        <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
+
+                                        <label style="min-width:100px">Người Nhận :</label>
+                                        <input name="name" style="min-width:50px" placeholder="Người nhận :" />
+                                        <br />
+                                        <label style="min-width:100px">Địa chỉ :</label>
+                                        <input name="address" style="min-width:50px" placeholder="Địa chỉ người nhận :" />
+                                        <br />
+                                        <label style="min-width:100px"> Số điện thoại :</label>
+                                        <input name="phone" style="min-width:50px" placeholder="Số điện thoại :" />
+                                    <td class="actions" colspan="6">
+
+                                        <h2>Total: @Total</h2>
+
+                                    </td>
+                                    </form>
+
+
+
+                                </tr>
                                 </tbody>
                             </table>
                        <
