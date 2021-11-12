@@ -967,8 +967,6 @@ D:\FPT_Uni\Sem5\codeC#_Trung\script_project\MobileShop\MobileShop\obj\Debug\netc
 D:\FPT_Uni\Sem5\codeC#_Trung\script_project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.dll
 D:\FPT_Uni\Sem5\codeC#_Trung\script_project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.pdb
 D:\FPT_Uni\Sem5\codeC#_Trung\script_project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.genruntimeconfig.cache
-D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditMau.cshtml.g.cs
-D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\MauIndex.cshtml.g.cs
 C:\Users\ADMIN\Desktop\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditMau.cshtml.g.cs
 C:\Users\ADMIN\Desktop\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\MauIndex.cshtml.g.cs
 C:\Users\ADMIN\Desktop\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Details.cshtml.g.cs
@@ -1092,3 +1090,6 @@ C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\
 C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.dll
 C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.pdb
 C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.genruntimeconfig.cache
+D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ErrorPage.cshtml.g.cs
+D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Details.cshtml.g.cs
+D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Index.cshtml.g.cs

@@ -32,7 +32,6 @@ namespace MobileShop.Controllers
         }
         public ActionResult Details(int? id)
         {
-
             Donhang donhang = context.Donhangs.Find(id);
             var chitiet = context.Chitietdonhangs.Include(d => d.MaspNavigation).Where(d => d.Madon == id).ToList();
             return View(chitiet);

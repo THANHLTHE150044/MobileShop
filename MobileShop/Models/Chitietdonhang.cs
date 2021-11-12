@@ -12,10 +12,10 @@ namespace MobileShop.Models
         public int? Soluong { get; set; }
         public decimal? Dongia { get; set; }
         public decimal? Thanhtien { get; set; }
-        public int Mamau { get; set; }
+        public int? Thang { get; set; }
+        public int? Nam { get; set; }
 
         public virtual Donhang MadonNavigation { get; set; }
-        public virtual Mau MamauNavigation { get; set; }
         public virtual Sanpham MaspNavigation { get; set; }
     }
 }

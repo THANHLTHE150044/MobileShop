@@ -9,12 +9,10 @@ namespace MobileShop.Models
 {
     public partial class Nguoidung
     {
-
         public Nguoidung()
         {
             Donhangs = new HashSet<Donhang>();
         }
-
 
         public int MaNguoiDung { get; set; }
         public string Hoten { get; set; }

@@ -1,42 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace MobileShop.Models
 {
-    public class GioHang
+    public partial class Giohang
     {
-        //private int iMaSP;
+        public int Masp { get; set; }
+        public decimal Dongia { get; set; }
+        public int Soluong { get; set; }
+        public int MaNguoiDung { get; set; }
 
-        //public int IMaSP
-        //{
-        //    get { return iMaSP; }
-        //    set { iMaSP = value; }
-        //}
-        MobileShopContext db = new MobileShopContext();
-        public int iMasp { get; set; }
-        public string sTensp { get; set; }
-        public string sAnhBia { get; set; }
-        public double dDonGia { get; set; }
-        public int iSoLuong { get; set; }
-
-        public int iMamau{ get; set; }
-        public double ThanhTien
-        {
-            get { return iSoLuong * dDonGia; }
-        }
-        //Hàm tạo cho giỏ hàng
-        public GioHang(int Masp,int mamau)
-        {
-            iMasp = Masp;
-            iMamau = mamau;
-            Sanpham sp = db.Sanphams.Single(n => n.Masp == iMasp);
-            sTensp = sp.Tensp;
-            sAnhBia = sp.Anhbia;
-            dDonGia = double.Parse(sp.Giatien.ToString());
-            iSoLuong = 1;
-        }
-
+        public virtual Nguoidung MaNguoiDungNavigation { get; set; }
+        public virtual Sanpham MaspNavigation { get; set; }
     }
 }

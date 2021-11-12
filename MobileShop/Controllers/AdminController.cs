@@ -68,8 +68,6 @@ namespace MobileShop.Controllers
             var sanpham = context.Sanphams.Find(id);
             var hangselected = new SelectList(context.Hangsanxuats, "Mahang", "Tenhang", sanpham.Mahang);
             ViewBag.Mahang = hangselected;
-            ViewBag.Mau = context.Maus.ToList();
-            ViewBag.MauDaChon = context.MauSanphams.Where(m => m.Masp == id);
             ViewBag.Anh = context.Anhs.Where(a => a.Masp == id).ToList();
             return View(sanpham);
         }
@@ -309,100 +307,5 @@ namespace MobileShop.Controllers
         }
 
 
-        public ActionResult MauIndex(int? page)
-        {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
-            if (page == null) page = 1;
-            var mau = context.Maus.ToList();
-            int pageSize = 8;
-            int pageNumber = (page ?? 1);
-            return View(mau.ToPagedList(pageNumber, pageSize));
-        }
-
-        public ActionResult EditMau(int id)
-        {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
-            var mau = context.Maus.Find(id);
-            return View(mau);
-        }
-        [HttpPost]
-        public ActionResult EditMau(Mau mau)
-        {
-            try
-            {
-                var maucu = context.Maus.Find(mau.Mamau);
-                maucu.Tenmau = mau.Tenmau;
-                context.SaveChanges();
-                return RedirectToAction("MauIndex");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        public ActionResult DeleteMau(int id)
-        {
-            try
-            {
-                var mau = context.Maus.FirstOrDefault(s => s.Mamau == id);
-                context.Maus.Remove(mau);
-                context.SaveChanges();
-                return RedirectToAction("MauIndex");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        public ActionResult AddMau()
-        {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddMau(Mau mau)
-        {
-            try
-            {
-                context.Maus.Add(mau);
-                context.SaveChanges();
-                return RedirectToAction("MauIndex");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        public ActionResult AddMauSanpham(int masp, int mamau)
-        {
-            try
-            {
-                MauSanpham mauSanpham = new MauSanpham() { Masp = masp, Mamau = mamau };
-                context.MauSanphams.Add(mauSanpham);
-                context.SaveChanges();
-                return RedirectToAction("EditProduct", new { id = masp });
-            }
-            catch
-            {
-                return RedirectToAction("EditProduct", new { id = masp });
-            }
-        }
-        public ActionResult DeleteMauSanpham(int masp, int mamau)
-        {
-            try
-            {
-                var mausanpham = context.MauSanphams.FirstOrDefault(s => s.Mamau == mamau && s.Masp == masp);
-                context.MauSanphams.Remove(mausanpham);
-                context.SaveChanges();
-                return RedirectToAction("EditProduct", new { id = masp });
-            }
-            catch
-            {
-                return RedirectToAction("EditProduct", new { id = masp });
-            }
-        }
     }
 }

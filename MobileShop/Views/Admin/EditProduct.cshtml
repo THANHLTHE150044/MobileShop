@@ -113,43 +113,8 @@
             </div>
         }
     </div>
-    <div class="col-md-6">
-        <h4 class="mt-2" style="text-align:center">Chọn màu</h4>
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <table class="table table-bordered table-striped mb-0">
-                <thead>
-                    <tr>
-                        <th scope="col">Màu</th>
-                        <th scope="col">Chọn</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var mau in ViewBag.Mau)
-                    {
-                        <tr>
-                            <td>@mau.Tenmau</td>
-                            @{
-                                int count = 0;
-                                foreach (var maudachon in ViewBag.MauDaChon)
-                                {
-                                    if (maudachon.Mamau == mau.Mamau)
-                                    {
-                                        <td>@Html.ActionLink("Bỏ màu", "DeleteMauSanpham", "Admin", new { masp = Model.Masp, mamau = mau.Mamau })</td>
-                                        count++;
-                                    }
-                                }
-                                if (count == 0)
-                                {
-                                    <td>@Html.ActionLink("Thêm màu", "AddMauSanpham", "Admin", new { masp = Model.Masp, mamau = mau.Mamau })</td>
-                                }
-                            }
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="col-md-6">
+    <div>
+        <h2>Thêm ảnh mô tả sản phẩm</h2>
         <form asp-controller="Admin" asp-action="AddAnh">
             <div class="row">
                 <input type="hidden" name="masp" value="@Model.Masp" />
