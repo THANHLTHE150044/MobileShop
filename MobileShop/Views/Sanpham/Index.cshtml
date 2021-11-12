@@ -4,23 +4,7 @@
 @{
     ViewBag.Title = "Product List";
 
-    var maHangSanXuat = ViewData["MaHangSanXuat"] as List<Hangsanxuat>;
 }
-
-@*<br />
-    <div class="row">
-        <div class="col-md-8">
-            <img class="img-responsive" src="https://cdn.tgdd.vn/2021/11/banner/830-300-830x300-2.png" />
-        </div>
-        <div class="col-md-4">
-            <img src="https://cdn.tgdd.vn/2021/11/banner/laptopdesk(3)-340x340.jpg" class="img-responsive" alt="" />
-
-        </div>
-    </div>
-    <div>
-        <img class="img-responsive" src="https://cdn.tgdd.vn/2021/10/banner/1200-44-1200x44.png" />
-    </div>
-    <br />*@
 
 <style>
     .active {
@@ -64,22 +48,10 @@
                 @foreach (var item in ViewBag.Hangsanxuats)
                 {
                     <tr>
-                        @foreach (Hangsanxuat maHang in maHangSanXuat)
-                        {
-                            if (maHang.Mahang == item.Mahang)
-                            {
-                                <td class="text-center bg-dark">
-                                    @{ string tenhang = item.Tenhang;}
-                                    @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning " })
-                                </td>
-                            }
-                        }
-
-
-                        @*<td class="text-center bg-dark">
-                                @{ string tenhang = item.Tenhang;}
-                                @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning" })
-                            </td>*@
+                        <td class="text-center bg-dark">
+                            @{ string tenhang = item.Tenhang;}
+                            @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning " })
+                        </td>
                     </tr>
                 }
             </tbody>
