@@ -19,8 +19,7 @@ namespace MobileShop.Controllers
         }
         public ActionResult Index(int? page)
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
+            
            
             Nguoidung abc = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             Nguoidung user = context.Nguoidungs.SingleOrDefault(s => s.Email.Equals(abc.Email));
@@ -28,15 +27,16 @@ namespace MobileShop.Controllers
             if (user.Idquyen != 1)
             {
                 return RedirectToAction("ErrorPage");
-            }else
-            {
-                if (page == null) page = 1;
+            }
+            if (HttpContext.Session.GetString("UserSession") != null)
+                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
+            if (page == null) page = 1;
                 var sanpham = context.Sanphams.OrderBy(x => x.Masp);
                 int pageSize = 8;
                 int pageNumber = (page ?? 1);
                 ViewBag.Hangsanxuats = context.Hangsanxuats.ToList();
                 return View(sanpham.ToPagedList(pageNumber, pageSize));
-            }
+            
            
         }
         public ActionResult AddProduct()
