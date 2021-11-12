@@ -101,7 +101,7 @@
                                         <h2><a href="single-product.html">@item.Tensp</a></h2>
                                         <div class="product-carousel-price">
                                             <ins>@item.Giatien</ins> <del>$100.00</del>
-                                            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp }))
+                                            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @Masp = item.Masp }))
                                             {
                                                 <input type="submit" value="Mua hàng" id="bgnGioHang" />}
                                         </div>

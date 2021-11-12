@@ -12,6 +12,7 @@ namespace MobileShop.Models
         public Nguoidung()
         {
             Donhangs = new HashSet<Donhang>();
+            Giohangs = new HashSet<Giohang>();
         }
 
         public int MaNguoiDung { get; set; }
@@ -24,9 +25,11 @@ namespace MobileShop.Models
 
         public virtual PhanQuyen IdquyenNavigation { get; set; }
         public virtual ICollection<Donhang> Donhangs { get; set; }
+        public virtual ICollection<Giohang> Giohangs { get; set; }
         [NotMapped]
         [Required]
         [System.ComponentModel.DataAnnotations.Compare("Matkhau")]
         public string NhaplaiMatkhau { get; set; }
     }
+
 }
