@@ -129,6 +129,18 @@ namespace MobileShop.Models
                 entity.HasKey(e => new { e.Masp, e.Mamau });
 
                 entity.ToTable("Mau_Sanpham");
+
+                entity.HasOne(d => d.MamauNavigation)
+                    .WithMany(p => p.MauSanphams)
+                    .HasForeignKey(d => d.Mamau)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Mau_Sanpham_Mau");
+
+                entity.HasOne(d => d.MaspNavigation)
+                    .WithMany(p => p.MauSanphams)
+                    .HasForeignKey(d => d.Masp)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Mau_Sanpham_Sanpham");
             });
 
             modelBuilder.Entity<Nguoidung>(entity =>
