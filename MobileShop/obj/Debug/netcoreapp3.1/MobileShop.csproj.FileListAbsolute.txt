@@ -1094,3 +1094,4 @@ D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Details.cshtml.g.cs
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Index.cshtml.g.cs
 C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Giohang\Index.cshtml.g.cs
+D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Giohang\Index.cshtml.g.cs
