@@ -22,7 +22,12 @@
     </div>
     <br />*@
 
-
+<style>
+    .active {
+        background:red!important;
+        color:#5a88ca;
+    }
+</style>
 <div class="slider-area">
     <div class="block-slider block-slider4">
         <ul class="" id="bxslider-home4">
@@ -65,7 +70,7 @@
                             {
                                 <td class="text-center bg-dark">
                                     @{ string tenhang = item.Tenhang;}
-                                    @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning active" })
+                                    @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang  }, new { @class = "navbar-brand text-warning " })
                                 </td>
                             }
                         }
@@ -78,7 +83,9 @@
                     </tr>
                 }
             </tbody>
-        </table>
+        </table><ul class="nav navbar-nav">
+    
+</ul>
     </div>
     <div class="dt col-lg-9">
         <div class="dt col-lg-12">
@@ -98,7 +105,7 @@
                                 </div>
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                     <div class="text-center">
-                                        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp }))
+                                        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp ,@mamau=1 }))
                                         {
                                             if (item.Soluong < 1)
                                             {
@@ -125,3 +132,12 @@
         </div>
     </div>
 </div>
+@*<script type="text/javascript">
+    const mahang = document.querySelector('.mahang');
+    const td = document.querySelector('.abc');
+    mahang.addEventListener('click', () => {
+        td.classList.add('active');
+
+
+    })
+</script>*@
