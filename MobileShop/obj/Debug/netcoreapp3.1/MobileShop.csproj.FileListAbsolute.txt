@@ -1079,3 +1079,5 @@ C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\
 C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.dll
 C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.pdb
 C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\MobileShop.genruntimeconfig.cache
+C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Details.cshtml.g.cs
+C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Index.cshtml.g.cs
