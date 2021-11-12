@@ -296,5 +296,42 @@ namespace MobileShop.Controllers
                 return RedirectToAction("EditProduct", new { id = masp });
             }
         }
+        public ActionResult DoanhThu(string? nam)
+        {
+            if (HttpContext.Session.GetString("UserSession") != null)
+                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
+            List<int> data = new List<int>();
+            int namHienTai;
+            if (nam == null)
+            {
+                namHienTai = int.Parse(DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                namHienTai = int.Parse(nam);
+            }
+            int thangHienTai = int.Parse(DateTime.Now.Month.ToString());
+            TempData["nam"] = namHienTai;
+            for (int i = 1; i <= 12; i++)
+            {
+                int count = 0;
+                List<Chitietdonhang> listChiTiet = context.Chitietdonhangs.Where(s => s.Nam == namHienTai && s.Thang == i).ToList();
+                foreach (Chitietdonhang item in listChiTiet)
+                {
+                    count += Convert.ToInt32(item.Thanhtien);
+                }
+                if (i <= thangHienTai)
+                {
+                    data.Add(count);
+                }
+                else
+                {
+                    data.Add(0);
+                }
+
+            }
+            TempData["data"] = data;
+            return View();
+        }
     }
 }
