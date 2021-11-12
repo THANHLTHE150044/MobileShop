@@ -17,34 +17,31 @@ namespace MobileShop.Controllers
         public List<GioHang> LayGioHang()
         {
             List<GioHang> lstGioHang = new List<GioHang>();
-            if (HttpContext.Session.GetString("UserSession") != null)
-                TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             if (HttpContext.Session.GetString("GioHang") != null)
             {
                 lstGioHang = JsonConvert.DeserializeObject<List<GioHang>>(HttpContext.Session.GetString("GioHang"));
             }
-
+                
+           
             if (lstGioHang == null)
             {
-
+                //Nếu giỏ hàng chưa tồn tại thì mình tiến hành khởi tao list giỏ hàng (sessionGioHang)
+                lstGioHang = new List<GioHang>();
                 HttpContext.Session.SetString("GioHang", JsonConvert.SerializeObject(lstGioHang));
-
             }
             return lstGioHang;
         }
+           
+         
         //Thêm giỏ hàng
         public ActionResult ThemGioHang(int iMasp, int mamau)
         {
             Sanpham sp = db.Sanphams.SingleOrDefault(n => n.Masp == iMasp);
-            if (sp == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
+            
             //Lấy ra session giỏ hàng
             List<GioHang> lstGioHang = LayGioHang();
             //Kiểm tra sp này đã tồn tại trong session[giohang] chưa
-            GioHang sanpham = lstGioHang.Find(n => n.iMasp == iMasp);
+            GioHang sanpham = lstGioHang.SingleOrDefault(n => n.iMasp == sp.Masp);
             if (sanpham == null)
             {
                 sanpham = new GioHang(iMasp,mamau);
