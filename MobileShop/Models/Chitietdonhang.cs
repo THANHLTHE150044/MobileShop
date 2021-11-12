@@ -15,6 +15,7 @@ namespace MobileShop.Models
         public int Mamau { get; set; }
 
         public virtual Donhang MadonNavigation { get; set; }
+        public virtual Mau MamauNavigation { get; set; }
         public virtual Sanpham MaspNavigation { get; set; }
     }
 }

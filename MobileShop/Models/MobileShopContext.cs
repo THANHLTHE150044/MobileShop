@@ -73,6 +73,12 @@ namespace MobileShop.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Chitietdonhang_Donhang");
 
+                entity.HasOne(d => d.MamauNavigation)
+                    .WithMany(p => p.Chitietdonhangs)
+                    .HasForeignKey(d => d.Mamau)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Chitietdonhang_Mau");
+
                 entity.HasOne(d => d.MaspNavigation)
                     .WithMany(p => p.Chitietdonhangs)
                     .HasForeignKey(d => d.Masp)
