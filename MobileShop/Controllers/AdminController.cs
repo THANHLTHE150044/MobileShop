@@ -19,8 +19,6 @@ namespace MobileShop.Controllers
         }
         public ActionResult Index(int? page)
         {
-            
-           
             Nguoidung abc = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             Nguoidung user = context.Nguoidungs.SingleOrDefault(s => s.Email.Equals(abc.Email));
             
@@ -36,8 +34,6 @@ namespace MobileShop.Controllers
                 int pageNumber = (page ?? 1);
                 ViewBag.Hangsanxuats = context.Hangsanxuats.ToList();
                 return View(sanpham.ToPagedList(pageNumber, pageSize));
-            
-           
         }
         public ActionResult AddProduct()
         {
@@ -127,7 +123,6 @@ namespace MobileShop.Controllers
             ViewBag.Nguoidungs = context.Nguoidungs.ToList();
             ViewBag.Chitietdonhangs = context.Chitietdonhangs.Where(s => s.Madon == id).ToList();
             ViewBag.Sanphams = context.Sanphams.ToList();
-            ViewBag.Maus = context.Maus.ToList();
             return View(donhang);
         }
         [HttpPost]
@@ -178,7 +173,6 @@ namespace MobileShop.Controllers
                 nguoidungcu.Dienthoai = nguoidung.Dienthoai;
                 nguoidungcu.Matkhau = nguoidung.Matkhau;
                 nguoidungcu.Idquyen = nguoidung.Idquyen;
-
                 context.SaveChanges();
                 return RedirectToAction("NguoidungIndex");
             }
@@ -213,7 +207,6 @@ namespace MobileShop.Controllers
 
             return View(hangsanxuat.ToPagedList(pageNumber, pageSize));
         }
-
         public ActionResult EditHang(int id)
         {
             if (HttpContext.Session.GetString("UserSession") != null)
@@ -252,7 +245,6 @@ namespace MobileShop.Controllers
                 return View();
             }
         }
-
         public ActionResult AddHang()
         {
             if (HttpContext.Session.GetString("UserSession") != null)
@@ -274,7 +266,6 @@ namespace MobileShop.Controllers
                 return View();
             }
         }
-
         public ActionResult DeleteAnh(int id)
         {
             try
@@ -305,7 +296,5 @@ namespace MobileShop.Controllers
                 return RedirectToAction("EditProduct", new { id = masp });
             }
         }
-
-
     }
 }
