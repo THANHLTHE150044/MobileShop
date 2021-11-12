@@ -74,9 +74,18 @@
                                 <p>Hàng cũ</p>
                             }
                         </h4>
-                        <button class=" fa fa-shopping-cart btn btn-primary btn-rounded">  Mua ngay</button>
-                        <h3 class="box-title mt-5">Số lượng chỉ còn @Model.Soluong toàn quốc!</h3>
-
+                        @if (Model.Soluong < 1)
+                        {
+                            <h5 style="color:red">Hết Hàng</h5>
+                        }
+                        else
+                        {
+                            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @Ma = Model.Masp }))
+                            {
+                                <input type="submit" value="Mua ngay" id="bgnGioHang" class=" fa fa-shopping-cart btn btn-primary btn-rounded"/>
+                            }
+                            <h3 class="box-title mt-5">Số lượng chỉ còn @Model.Soluong toàn quốc!</h3>
+                        }
                         <table class="table table-striped">
                             <tbody>
                                 <tr>

@@ -10,6 +10,7 @@ namespace MobileShop.Models
         public Sanpham()
         {
             Anhs = new HashSet<Anh>();
+            Chitietdonhangs = new HashSet<Chitietdonhang>();
             Giohangs = new HashSet<Giohang>();
         }
 
@@ -34,6 +35,7 @@ namespace MobileShop.Models
 
         public virtual Hangsanxuat MahangNavigation { get; set; }
         public virtual ICollection<Anh> Anhs { get; set; }
+        public virtual ICollection<Chitietdonhang> Chitietdonhangs { get; set; }
         public virtual ICollection<Giohang> Giohangs { get; set; }
     }
 }

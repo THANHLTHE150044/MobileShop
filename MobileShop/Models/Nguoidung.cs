@@ -31,5 +31,4 @@ namespace MobileShop.Models
         [System.ComponentModel.DataAnnotations.Compare("Matkhau")]
         public string NhaplaiMatkhau { get; set; }
     }
-
 }

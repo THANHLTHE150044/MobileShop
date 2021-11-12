@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
@@ -30,16 +28,16 @@ namespace MobileShop.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var builder = new ConfigurationBuilder()
-                            .SetBasePath(Directory.GetCurrentDirectory())
-                            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-            IConfigurationRoot configuration = builder.Build();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DB"));
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("server =(local); database = MobileShop;uid=sa;pwd=123456;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "Vietnamese_CI_AS");
 
             modelBuilder.Entity<Anh>(entity =>
             {
@@ -60,22 +58,22 @@ namespace MobileShop.Models
 
             modelBuilder.Entity<Chitietdonhang>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("Chitietdonhang");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Dongia).HasColumnType("decimal(18, 0)");
 
                 entity.Property(e => e.Thanhtien).HasColumnType("decimal(18, 0)");
 
                 entity.HasOne(d => d.MadonNavigation)
-                    .WithMany()
+                    .WithMany(p => p.Chitietdonhangs)
                     .HasForeignKey(d => d.Madon)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Chitietdonhang_Donhang");
 
                 entity.HasOne(d => d.MaspNavigation)
-                    .WithMany()
+                    .WithMany(p => p.Chitietdonhangs)
                     .HasForeignKey(d => d.Masp)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Chitietdonhang_Sanpham");
@@ -101,7 +99,8 @@ namespace MobileShop.Models
 
             modelBuilder.Entity<Giohang>(entity =>
             {
-                entity.HasKey(e => e.Magiohang);
+                entity.HasKey(e => e.Magiohang)
+                    .HasName("PK_Gohang");
 
                 entity.ToTable("Giohang");
 
@@ -110,6 +109,7 @@ namespace MobileShop.Models
                 entity.HasOne(d => d.MaNguoiDungNavigation)
                     .WithMany(p => p.Giohangs)
                     .HasForeignKey(d => d.MaNguoiDung)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Giohang_Nguoidung");
 
                 entity.HasOne(d => d.MaspNavigation)

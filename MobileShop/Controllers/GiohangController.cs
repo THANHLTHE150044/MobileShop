@@ -143,11 +143,11 @@ namespace MobileShop.Controllers
             {
                 Chitietdonhang ct = new Chitietdonhang() {
                     Madon = dh.Madon,
+                    Masp = item.Masp,
                     Soluong = item.Soluong,
                     Dongia = item.Dongia,
                     Thanhtien = item.Soluong * item.Dongia,
                     Thang = DateTime.Now.Month,
-
                     Nam = DateTime.Now.Year
                 };
                 db.Chitietdonhangs.Add(ct);

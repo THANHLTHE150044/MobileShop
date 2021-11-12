@@ -723,9 +723,6 @@ D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\NguoidungIndex.cshtml.g.cs
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Danhmuc\Index.cshtml.g.cs
-D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Giohang\Giohang.cshtml.g.cs
-D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Giohang\GiohangPartial.cshtml.g.cs
-D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Giohang\SuaGioHang.cshtml.g.cs
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Sanpham\Detail.cshtml.g.cs
@@ -1092,3 +1089,4 @@ C:\Users\This PC\Documents\GitHub\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\
 D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Giohang\Index.cshtml.g.cs
 C:\Users\ADMIN\Desktop\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Giohang\Index.cshtml.g.cs
 C:\Users\ADMIN\Desktop\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\DoanhThu.cshtml.g.cs
+D:\Learning\FPT U\Ki5\PRN211\Project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\DoanhThu.cshtml.g.cs

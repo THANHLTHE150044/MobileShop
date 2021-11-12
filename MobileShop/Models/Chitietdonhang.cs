@@ -14,6 +14,7 @@ namespace MobileShop.Models
         public decimal? Thanhtien { get; set; }
         public int? Thang { get; set; }
         public int? Nam { get; set; }
+        public int Id { get; set; }
 
         public virtual Donhang MadonNavigation { get; set; }
         public virtual Sanpham MaspNavigation { get; set; }

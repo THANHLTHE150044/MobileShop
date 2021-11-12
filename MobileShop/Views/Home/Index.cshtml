@@ -6,45 +6,21 @@
     var hangSanXuat = ViewData["HangSanXuat"] as List<Hangsanxuat>;
     var anh = ViewData["Anh"] as List<Anh>;
 }
-
-
-
 <div class="slider-area">
     <div class="block-slider block-slider4">
         <ul class="" id="bxslider-home4">
-            @foreach (Anh anhPhu in anh)
-            {
-                if (anhPhu.Masp == @Model.Masp)
-                {
-                    <li>
-                        <img src="@Url.Content(anhPhu.Url)" alt="Slide">
-                    </li>
-                }
-            }
+            <li>
+                <img src="https://cdn.tgdd.vn/2021/11/banner/Aseri-830-300-830x300.png" alt="Slide">
+            </li>
+            <li>
+                <img src="https://cdn.tgdd.vn/2021/11/banner/830-300-830x300-8.png" alt="Slide">
+            </li>
+            <li>
+                <img src="https://cdn.tgdd.vn/2021/11/banner/830-300-830x300-6.png" alt="Slide">
+            </li>
         </ul>
     </div>
 </div>
-
-<div class="brands-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="brand-wrapper">
-                    <div class="brand-list">
-                        @foreach (Hangsanxuat item in hangSanXuat)
-                        {
-                            <a href="Link category"><img src="Them anh vao day" alt=""></a>
-                        }
-
-                        <img src="img/brand2.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End brands area -->
-
 <div class="maincontent-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
@@ -53,36 +29,43 @@
                 <div class="latest-product">
                     @foreach (Hangsanxuat hang in hangSanXuat)
                     {
+                        int count = 0;
                         <h2 class="section-title">@hang.Tenhang</h2>
                         <div class="product-carousel">
+
                             @foreach (Sanpham item in listSanPham)
                             {
                                 @if (hang.Mahang == item.Mahang)
                                 {
+                                    count++;
                                     <div class="single-product">
                                         <div class="product-f-image">
-                                            <img src="@Url.Content(item.Anhbia)" alt="">
+                                            <img style="height: 300px" src="@Url.Content(item.Anhbia)" alt="">
                                             <div class="product-hover">
-                                                <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                                <a href="/Sanpham/Detail/@item.Masp" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                             </div>
                                         </div>
                                         <h2><a href="single-product.html">@item.Tensp</a></h2>
                                         <div class="product-carousel-price">
                                             <ins>@item.Giatien</ins> <del>$100.00</del>
-                                            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @Masp = item.Masp }))
+                                            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @Ma = item.Masp }))
                                             {
-                                                <input type="submit" value="Mua hàng" id="bgnGioHang" />}
+                                                <input type="submit" value="Mua hàng" id="bgnGioHang" />
+                                            }
                                         </div>
                                     </div>
 
                                 }
+
                             }
                         </div>
+                        if (count == 0)
+                        {
+                            <h2>Không có sản phẩm trong mục này</h2>
+                        }
                     }
-
                 </div>
             </div>
         </div>
     </div>
 </div> <!-- End main content area -->
-
