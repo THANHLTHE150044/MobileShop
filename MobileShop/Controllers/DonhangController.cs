@@ -17,12 +17,16 @@ namespace MobileShop.Controllers
         {
             if (HttpContext.Session.GetString("UserSession") == null)
             {
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("Login", "Users");
             }
+            Nguoidung abc = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
+            Nguoidung user = context.Nguoidungs.SingleOrDefault(s => s.Email.Equals(abc.Email));
+
+            
             if (HttpContext.Session.GetString("UserSession") != null)
                 TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
-            Nguoidung kh = (Nguoidung)TempData["User"];
-            int maND = kh.MaNguoiDung;
+            
+            int maND = user.MaNguoiDung;
             var donhangs = context.Donhangs.Include(d => d.MaNguoidungNavigation).Where(d => d.MaNguoidung == maND);
             return View(donhangs.ToList());
         }

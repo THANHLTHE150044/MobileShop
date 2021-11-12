@@ -19,6 +19,7 @@ namespace MobileShop.Controllers
         public ActionResult Index(int? page, int? Mahang, string? keyword)
         {
             ViewData["MaHangSanXuat"] = context.Hangsanxuats.ToList();
+            //ViewData["hangselected"] = Mahang;
             if (Mahang == null)
             {
                 if (keyword == null) keyword = "";
@@ -29,7 +30,7 @@ namespace MobileShop.Controllers
                 ViewBag.Hangsanxuats = context.Hangsanxuats.ToList();
                 if (HttpContext.Session.GetString("UserSession") != null)
                     TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
-                
+                //ViewData["hangselected"] = Mahang;
                 return View(sanpham.ToPagedList(pageNumber, pageSize));
             }
             else
@@ -40,6 +41,7 @@ namespace MobileShop.Controllers
                 int pageSize = 9;
                 int pageNumber = (page ?? 1);
                 ViewBag.Hangsanxuats = context.Hangsanxuats.ToList();
+                //ViewData["hangselected"] = Mahang;
                 return View(sanpham.ToPagedList(pageNumber, pageSize));
             }
         }
