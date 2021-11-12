@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MobileShop.Models.Chitietdonhang>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Sản phẩm
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Màu
+        </th>
+        <th>
+            Đơn giá / 1 sản phẩm
+        </th>
+        <th>
+            Thành tiền
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        item.MaspNavigation.Tensp
+    </td>
+    <td>
+        item.Soluong
+    </td>
+    <td>
+        item.MamauNavigation.Tenmau
+    </td>
+    <td>
+        item.Dongia
+    </td>
+    <td>
+         item.Thanhtien
+    </td>
+</tr>
+    }
+
+</table>

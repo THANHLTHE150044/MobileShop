@@ -95,23 +95,18 @@
                                         <div class="product-f-image">
                                             <img src="@Url.Content(item.Anhbia)" alt="">
                                             <div class="product-hover">
-                                                <a asp-action="ThemGioHang" asp-controller="Giohang" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                                 <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                             </div>
-
-
-
                                         </div>
-
                                         <h2><a href="single-product.html">@item.Tensp</a></h2>
-
                                         <div class="product-carousel-price">
                                             <ins>@item.Giatien</ins> <del>$100.00</del>
+                                            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp }))
+                                            {
+                                                <input type="submit" value="Mua hàng" id="bgnGioHang" />}
                                         </div>
                                     </div>
-                                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp}))
-                                    {
-                        <input type="submit" value="Mua hàng" id="bgnGioHang" />                        }
+
                                 }
                             }
                         </div>

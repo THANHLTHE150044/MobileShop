@@ -32,7 +32,7 @@ namespace MobileShop.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server =(local); database = MobileShop;uid=sa;pwd=123456;");
+                optionsBuilder.UseSqlServer("server =(local); database = MobileShop;uid=sa;pwd=quoc1910;");
             }
         }
 
@@ -66,6 +66,24 @@ namespace MobileShop.Models
                 entity.Property(e => e.Dongia).HasColumnType("decimal(18, 0)");
 
                 entity.Property(e => e.Thanhtien).HasColumnType("decimal(18, 0)");
+
+                entity.HasOne(d => d.MadonNavigation)
+                    .WithMany(p => p.Chitietdonhangs)
+                    .HasForeignKey(d => d.Madon)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Chitietdonhang_Donhang");
+
+                entity.HasOne(d => d.MamauNavigation)
+                    .WithMany(p => p.Chitietdonhangs)
+                    .HasForeignKey(d => d.Mamau)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Chitietdonhang_Mau");
+
+                entity.HasOne(d => d.MaspNavigation)
+                    .WithMany(p => p.Chitietdonhangs)
+                    .HasForeignKey(d => d.Masp)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Chitietdonhang_Sanpham");
             });
 
             modelBuilder.Entity<Donhang>(entity =>
