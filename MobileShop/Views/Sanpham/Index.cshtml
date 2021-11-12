@@ -24,8 +24,8 @@
 
 <style>
     .active {
-        background:red!important;
-        color:#5a88ca;
+        background: red !important;
+        color: #5a88ca;
     }
 </style>
 <div class="slider-area">
@@ -70,7 +70,7 @@
                             {
                                 <td class="text-center bg-dark">
                                     @{ string tenhang = item.Tenhang;}
-                                    @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang  }, new { @class = "navbar-brand text-warning " })
+                                    @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning " })
                                 </td>
                             }
                         }
@@ -84,45 +84,52 @@
                 }
             </tbody>
         </table><ul class="nav navbar-nav">
-    
-</ul>
+        </ul>
     </div>
     <div class="dt col-lg-9">
         <div class="dt col-lg-12">
             <div class="row">
                 <h3 style="text-align: center; background-color: #5a88ca" border-radius: 30px; color: whitesmoke"> Danh sách sản phẩm </h3>
-                @foreach (var item in Model)
+
+                @if (Model.Count == 0)
                 {
-                    <div class="col-md-4" style="padding: 5px;">
-                        <div style="padding: 5px; border: 1px solid grey; background-color: lavender; border-radius: 20px; height: 450px; margin-bottom: 5px">
-                            <div>
-                                <a href="/Sanpham/Detail/@item.Masp"><img style="width: 100%; margin-top: 15px; height: 300px;" src="@Url.Content(item.Anhbia)" /></a>
-                                <div class="p-4">
-                                    <div class="text-center">
-                                        <h4><a style="font-size:20px; color: #5a88ca; text-align: center" href="/Sanpham/Detail/@item.Masp">@item.Tensp</a></h4>
-                                        <span>Giá: @item.Giatien</span>
+                    <h1 style="text-align:center; color:darkred">Không có sản phẩm</h1>
+                }
+                else
+                {
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4" style="padding: 5px;">
+                            <div style="padding: 5px; border: 1px solid grey; background-color: lavender; border-radius: 20px; height: 450px; margin-bottom: 5px">
+                                <div>
+                                    <a href="/Sanpham/Detail/@item.Masp"><img style="width: 100%; margin-top: 15px; height: 300px;" src="@Url.Content(item.Anhbia)" /></a>
+                                    <div class="p-4">
+                                        <div class="text-center">
+                                            <h4><a style="font-size:20px; color: #5a88ca; text-align: center" href="/Sanpham/Detail/@item.Masp">@item.Tensp</a></h4>
+                                            <span>Giá: @item.Giatien</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center">
-                                        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp =1 ,@mamau=1 }))
-                                        {
-                                            if (item.Soluong < 1)
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="text-center">
+                                            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = 1, @mamau = 1 }))
                                             {
-                                                <button disabled class="btn btn-outline-dark text-dark">
-                                                    <i class="bi-cart-fill me-1"></i>Hết hàng
-                                                </button>
+                                                if (item.Soluong < 1)
+                                                {
+                                                    <button disabled class="btn btn-outline-dark text-dark">
+                                                        <i class="bi-cart-fill me-1"></i>Hết hàng
+                                                    </button>
+                                                }
+                                                else
+                                                {
+                                                    <input class="btn btn-danger" type="submit" value="Mua hàng" id="bgnGioHang" />
+                                                }
                                             }
-                                            else
-                                            {
-                                                <input class="btn btn-danger" type="submit" value="Mua hàng" id="bgnGioHang" />
-                                            }
-                                        }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
             </div>
             <div class="text-center" style="margin-top:20px">
@@ -132,12 +139,3 @@
         </div>
     </div>
 </div>
-@*<script type="text/javascript">
-    const mahang = document.querySelector('.mahang');
-    const td = document.querySelector('.abc');
-    mahang.addEventListener('click', () => {
-        td.classList.add('active');
-
-
-    })
-</script>*@
