@@ -5,6 +5,7 @@
     ViewBag.Title = "Product List";
 
     var maHangSanXuat = ViewData["MaHangSanXuat"] as List<Hangsanxuat>;
+    //var hangselected = ViewData["hangselected"] as String;
 }
 
 @*<br />
@@ -67,14 +68,14 @@
                                     @{ string tenhang = item.Tenhang;}
                                     @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning" })
                                 </td>
-                            }
+                            }                           
                         }
-
 
                         @*<td class="text-center bg-dark">
                                 @{ string tenhang = item.Tenhang;}
                                 @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning" })
                             </td>*@
+
                     </tr>
                 }
             </tbody>
@@ -87,7 +88,7 @@
 
                 @if (Model.Count == 0)
                 {
-                    <h1 style="text-align:center">Không có sản phẩm</h1>
+                    <h1 style="text-align:center; color:darkred">Không có sản phẩm</h1>
                 }
                 else
                 {
