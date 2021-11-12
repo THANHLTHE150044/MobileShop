@@ -8,13 +8,20 @@
 {
     <div>
         <div class="row">
-            <label class="col-4">Mã đơn: @Model.Madon</label>
+            <label class="col-3">Mã đơn: @Model.Madon</label>
             @Html.HiddenFor(model => model.Madon)
-            <label class="col-4">Ngày đặt: @Model.Ngaydat</label>
+            <label class="col-3">Ngày đặt: @Model.Ngaydat</label>
             @Html.HiddenFor(model => model.Ngaydat)
-            <label class="col-4">Người đặt: @Model.Madon - @((ViewBag.Nguoidungs as IList<MobileShop.Models.Nguoidung>).FirstOrDefault(c => c.MaNguoiDung == Model.MaNguoidung).Hoten)</label>
+            <label class="col-6">Người đặt: @Model.Madon - @((ViewBag.Nguoidungs as IList<MobileShop.Models.Nguoidung>).FirstOrDefault(c => c.MaNguoiDung == Model.MaNguoidung).Hoten)</label>
             @Html.HiddenFor(model => model.MaNguoidung)
-
+        </div>
+        <div class="row">
+            <label class="col-3">Người nhận: @Model.Nguoinhan</label>
+            @Html.HiddenFor(model => model.Nguoinhan)
+            <label class="col-3">Sđt: @Model.Sdt</label>
+            @Html.HiddenFor(model => model.Sdt)
+            <label class="col-6">Địa chỉ: @Model.Diachi</label>
+            @Html.HiddenFor(model => model.Diachi)
         </div>
         <div class="row">
             @{
@@ -28,8 +35,8 @@
                         tongtien += chitiet.Thanhtien;
                     }
                 }
-                <label class="col-4">Số lượng sản phẩm: @soluong</label>
-                <label class="col-4">Tổng tiền: @tongtien</label>
+                <label class="col-3">Số lượng sản phẩm: @soluong</label>
+                <label class="col-3">Tổng tiền: @tongtien</label>
             }
             <label class="col-1">Trạng thái:</label>
             <select asp-for="Tinhtrang" class="form-control col-2" id="Tinhtrang" name="Tinhtrang">

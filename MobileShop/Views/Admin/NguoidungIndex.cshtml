@@ -10,7 +10,6 @@
         <th>Họ Tên</th>
         <th>Email</th>
         <th>Điện thoại</th>
-        <th>Mật khẩu</th>
         <th>Địa chỉ </th>
         <th>Tên quyền </th>
         <th>Hành động</th>
@@ -18,27 +17,12 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hoten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dienthoai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Matkhau)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diachi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdquyenNavigation.TenQuyen)
-            </td>
-            <td>
-                <a href="/Admin/EditNguoidung/@item.MaNguoiDung">Sửa</a>
-            </td>
+            <td>@item.Hoten</td>
+            <td>@item.Email</td>
+            <td>@item.Dienthoai</td>
+            <td>@item.Diachi</td>
+            <td>@item.IdquyenNavigation.TenQuyen</td>
+            <td><a href="/Admin/EditNguoidung/@item.MaNguoiDung">Sửa</a></td>
         </tr>
     }
 </table>
