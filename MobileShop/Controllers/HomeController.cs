@@ -26,6 +26,7 @@ namespace MobileShop.Controllers
             ViewData["listSanPham"] = db.Sanphams.ToList();
             if(HttpContext.Session.GetString("UserSession") != null)
             TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
+            ViewData["Anh"] = db.Anhs.ToList();
             return View();
            
         }

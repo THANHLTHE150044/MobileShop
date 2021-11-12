@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\MobileShop.csproj": {}
+    "C:\\Users\\admin\\Desktop\\New folder (3)\\MobileShop\\MobileShop\\MobileShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\MobileShop.csproj": {
+    "C:\\Users\\admin\\Desktop\\New folder (3)\\MobileShop\\MobileShop\\MobileShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\MobileShop.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Desktop\\New folder (3)\\MobileShop\\MobileShop\\MobileShop.csproj",
         "projectName": "MobileShop",
-        "projectPath": "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\MobileShop.csproj",
+        "projectPath": "C:\\Users\\admin\\Desktop\\New folder (3)\\MobileShop\\MobileShop\\MobileShop.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\obj\\",
+        "outputPath": "C:\\Users\\admin\\Desktop\\New folder (3)\\MobileShop\\MobileShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

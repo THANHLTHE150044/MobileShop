@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PdTy13OBBFM7RiNEkTNFhK+kLHGh8n+1gsSS1pLG3OS3LmZy3Ozf2LOBECH178FnlnY7VNC9w/IKgRtqY7QFYQ==",
+  "dgSpecHash": "jK0LV5IFWDePr48S3qve+k742W45Smb4/z9I4yTlhqlMq2h+ZM8KSK424Z+Q9lskszZsXK2m5qoFkv04OT/3vA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Desktop\\New folder (4)\\MobileShop\\MobileShop\\MobileShop.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Desktop\\New folder (3)\\MobileShop\\MobileShop\\MobileShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\jetbrains.annotations\\2021.1.0\\jetbrains.annotations.2021.1.0.nupkg.sha512",
