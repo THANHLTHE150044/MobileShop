@@ -39,9 +39,18 @@
     <td>
         @item.Ngaydat
     </td>
-    <td>
-        @item.Tinhtrang
-    </td>
+    @switch (item.Tinhtrang)
+    {
+        case 1:
+            <td>Hoàn thành</td>
+            break;
+        case 2:
+            <td>Đã hủy</td>
+            break;
+        default:
+            <td>Đang xử lý</td>
+            break;
+    }
     <td>
         @item.Nguoinhan
     </td>

@@ -8,6 +8,13 @@
 <p>
     <a href="/Admin/AddHang"><button class="btn btn-success">Thêm hãng mới</button></a>
 </p>
+
+@if (Model.Count == 0) {
+
+
+<h2>Chưa có hãng sản xuất </h2>
+}
+else {
 <table class="table table-bordered">
     <tr class="thead-light">
         <th>Mã hãng</th>
@@ -26,6 +33,7 @@
         </tr>
     }
 </table>
+}
 <br />
 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
