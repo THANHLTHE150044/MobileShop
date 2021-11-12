@@ -974,3 +974,6 @@ C:\Users\ADMIN\Desktop\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views
 C:\Users\ADMIN\Desktop\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Details.cshtml.g.cs
 C:\Users\ADMIN\Desktop\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Index.cshtml.g.cs
 C:\Users\ADMIN\Desktop\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ErrorPage.cshtml.g.cs
+D:\FPT_Uni\Sem5\codeC#_Trung\script_project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ErrorPage.cshtml.g.cs
+D:\FPT_Uni\Sem5\codeC#_Trung\script_project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Details.cshtml.g.cs
+D:\FPT_Uni\Sem5\codeC#_Trung\script_project\MobileShop\MobileShop\obj\Debug\netcoreapp3.1\Razor\Views\Donhang\Index.cshtml.g.cs

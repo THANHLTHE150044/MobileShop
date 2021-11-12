@@ -18,7 +18,8 @@ namespace MobileShop.Controllers
 
         public ActionResult Index(int? page, int? Mahang, string? keyword)
         {
-            if(Mahang == null)
+            ViewData["MaHangSanXuat"] = context.Hangsanxuats.ToList();
+            if (Mahang == null)
             {
                 if (keyword == null) keyword = "";
                 if (page == null) page = 1;
@@ -48,8 +49,8 @@ namespace MobileShop.Controllers
             if (HttpContext.Session.GetString("UserSession") != null)
                 TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             var sanpham = context.Sanphams.Find(id);
-            var hangselected = new SelectList(context.Hangsanxuats, "Mahang", "Tenhang", sanpham.Mahang);
-            ViewBag.Mahang = hangselected;
+            //var hangselected = new SelectList(context.Hangsanxuats, "Mahang", "Tenhang", sanpham.Mahang);
+            //ViewBag.Mahang = hangselected;
             ViewData["HangSanXuat"] = context.Hangsanxuats.ToList();
             ViewData["Anh"] = context.Anhs.ToList();
             return View(sanpham);

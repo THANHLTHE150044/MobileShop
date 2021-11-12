@@ -3,6 +3,8 @@
 @using X.PagedList.Mvc.Core;
 @{
     ViewBag.Title = "Product List";
+
+    var maHangSanXuat = ViewData["MaHangSanXuat"] as List<Hangsanxuat>;
 }
 
 @*<br />
@@ -57,11 +59,22 @@
                 @foreach (var item in ViewBag.Hangsanxuats)
                 {
                     <tr>
-                        <td class="text-center active bg-dark">
-                            @{ string tenhang = item.Tenhang;}
-                            @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning" })
-                            @*<a class="navbar-brand text-warning" href="/Sanpham/Index/@item.Mahang">@item.Tenhang</a>*@
-                        </td>
+                        @foreach (Hangsanxuat maHang in maHangSanXuat)
+                        {
+                            if (maHang.Mahang == item.Mahang)
+                            {
+                                <td class="text-center bg-dark">
+                                    @{ string tenhang = item.Tenhang;}
+                                    @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning active" })
+                                </td>
+                            }
+                        }
+
+
+                        @*<td class="text-center bg-dark">
+                                @{ string tenhang = item.Tenhang;}
+                                @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning" })
+                            </td>*@
                     </tr>
                 }
             </tbody>
