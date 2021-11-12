@@ -5,38 +5,59 @@
     ViewBag.Title = "Product List";
 }
 
-<br />
-<div class="row">
-    <div class="col-md-8">
-        <img class="img-responsive" src="https://cdn.tgdd.vn/2021/11/banner/830-300-830x300-2.png" />
-    </div>
-    <div class="col-md-4">
-        <img src="https://cdn.tgdd.vn/2021/11/banner/laptopdesk(3)-340x340.jpg" class="img-responsive" alt="" />
+@*<br />
+    <div class="row">
+        <div class="col-md-8">
+            <img class="img-responsive" src="https://cdn.tgdd.vn/2021/11/banner/830-300-830x300-2.png" />
+        </div>
+        <div class="col-md-4">
+            <img src="https://cdn.tgdd.vn/2021/11/banner/laptopdesk(3)-340x340.jpg" class="img-responsive" alt="" />
 
+        </div>
+    </div>
+    <div>
+        <img class="img-responsive" src="https://cdn.tgdd.vn/2021/10/banner/1200-44-1200x44.png" />
+    </div>
+    <br />*@
+
+
+<div class="slider-area">
+    <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4">
+            <li>
+                <img src="https://cdn.tgdd.vn/2021/11/banner/Aseri-830-300-830x300.png" alt="Slide">
+            </li>
+            <li>
+                <img src="https://cdn.tgdd.vn/2021/11/banner/830-300-830x300-8.png" alt="Slide">
+            </li>
+            <li>
+                <img src="https://cdn.tgdd.vn/2021/11/banner/830-300-830x300-6.png" alt="Slide">
+            </li>
+        </ul>
     </div>
 </div>
-<div>
-    <img class="img-responsive" src="https://cdn.tgdd.vn/2021/10/banner/1200-44-1200x44.png" />
-</div>
-<br />
+
+
 <div class="row">
+
+
     <div class="col-lg-3 p-0">
         <table class="table table-light table-hover border-bottom-10">
             <thead>
                 <tr>
-                    <th class="text-center navbar-brand bg-secondary">Danh mục</th>
+                    <th class="text-center navbar-brand bg-secondary"><b>Danh mục sản phẩm</b></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="text-center bg-dark">
-                        <a class="navbar-brand text-warning" href="/Sanpham">Tất cả sản phẩm</a>
+                        <a class="navbar-brand text-warning" href="/Sanpham"><b>Tất cả sản phẩm</b></a>
                     </td>
                 </tr>
                 @foreach (var item in ViewBag.Hangsanxuats)
                 {
                     <tr>
-                        <td class="text-center  bg-dark">
+                        <td class="text-center active bg-dark">
                             @{ string tenhang = item.Tenhang;}
                             @Html.ActionLink(@tenhang, "Index", "Sanpham", new { Mahang = item.Mahang }, new { @class = "navbar-brand text-warning" })
                             @*<a class="navbar-brand text-warning" href="/Sanpham/Index/@item.Mahang">@item.Tenhang</a>*@
@@ -49,16 +70,16 @@
     <div class="dt col-lg-9">
         <div class="dt col-lg-12">
             <div class="row">
-                <h3 style="text-align: center; background-color: palevioletred; border-radius: 30px; color: whitesmoke"> Danh sách sản phẩm </h3>
+                <h3 style="text-align: center; background-color: #5a88ca" border-radius: 30px; color: whitesmoke"> Danh sách sản phẩm </h3>
                 @foreach (var item in Model)
                 {
                     <div class="col-md-4" style="padding: 5px;">
                         <div style="padding: 5px; border: 1px solid grey; background-color: lavender; border-radius: 20px; height: 450px; margin-bottom: 5px">
                             <div>
-                                <a href="/Sanpham/Detail/@item.Masp"><img style="width: 100%; margin-top: 15px;" src="@Url.Content(item.Anhbia)" /></a>
+                                <a href="/Sanpham/Detail/@item.Masp"><img style="width: 100%; margin-top: 15px; height: 300px;" src="@Url.Content(item.Anhbia)" /></a>
                                 <div class="p-4">
                                     <div class="text-center">
-                                        <h4><a style="font-size:20px; color:black; text-align: center" href="/Sanpham/Detail/@item.Masp">@item.Tensp</a></h4>
+                                        <h4><a style="font-size:20px; color: #5a88ca; text-align: center" href="/Sanpham/Detail/@item.Masp">@item.Tensp</a></h4>
                                         <span>Giá: @item.Giatien</span>
                                     </div>
                                 </div>
