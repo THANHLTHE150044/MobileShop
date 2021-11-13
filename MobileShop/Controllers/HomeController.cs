@@ -23,7 +23,7 @@ namespace MobileShop.Controllers
         public IActionResult Index()
         {
             ViewData["HangSanXuat"] = db.Hangsanxuats.ToList();
-            ViewData["listSanPham"] = db.Sanphams.ToList();
+            ViewData["listSanPham"] = db.Sanphams.OrderBy(s => s.Masp).Take(10).ToList();
             if(HttpContext.Session.GetString("UserSession") != null)
             TempData["User"] = JsonConvert.DeserializeObject<Nguoidung>(HttpContext.Session.GetString("UserSession"));
             ViewData["Anh"] = db.Anhs.ToList();
